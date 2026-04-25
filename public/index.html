@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Glow Bar Lounge — Windermere, Durban</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --teal: #3AAFA9;
+    --teal-dark: #1a6b67;
+    --teal-deep: #0d3b38;
+    --gold: #C9A84C;
+    --gold-light: #E2C97A;
+    --cream: #FAF6EE;
+    --white: #ffffff;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Jost', sans-serif;
+    background: var(--teal-deep);
+    color: var(--white);
+    overflow-x: hidden;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.2rem 2rem;
+    background: rgba(13,59,56,0.9);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+  }
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    letter-spacing: 0.15em;
+    color: var(--gold);
+    text-transform: uppercase;
+  }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column;
+    justify-content: center; align-items: center;
+    text-align: center;
+    padding: 8rem 2rem 4rem;
+    position: relative;
+    background: radial-gradient(ellipse at 60% 40%, rgba(58,175,169,0.25) 0%, transparent 60%),
+                radial-gradient(ellipse at 20% 80%, rgba(201,168,76,0.1) 0%, transparent 50%),
+                var(--teal-deep);
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23C9A84C' fill-opacity='0.04'%3E%3Ccircle cx='30' cy='30' r='1'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    pointer-events: none;
+  }
+  .drop-icon {
+    width: 56px; height: 72px; margin-bottom: 2rem;
+    animation: floatDrop 3s ease-in-out infinite;
+  }
+  @keyframes floatDrop {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+  .hero-eyebrow {
+    font-size: 0.65rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.2rem;
+    animation: fadeUp 0.8s ease forwards;
+  }
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3rem, 8vw, 5.5rem);
+    font-weight: 300;
+    line-height: 1.05;
+    color: var(--white);
+    margin-bottom: 0.4rem;
+    animation: fadeUp 0.9s 0.1s ease both;
+  }
+  .hero-title em {
+    font-style: italic;
+    color: var(--gold-light);
+  }
+  .hero-sub {
+    font-size: 0.75rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 2.5rem;
+    animation: fadeUp 0.9s 0.2s ease both;
+  }
+  .hero-tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.15rem;
+    color: rgba(255,255,255,0.65);
+    margin-bottom: 3rem;
+    animation: fadeUp 0.9s 0.3s ease both;
+  }
+  .btn-primary {
+    display: inline-block;
+    padding: 1rem 2.8rem;
+    background: var(--gold);
+    color: var(--teal-deep);
+    font-family: 'Jost', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: none; cursor: pointer;
+    transition: all 0.3s;
+    animation: fadeUp 0.9s 0.4s ease both;
+  }
+  .btn-primary:hover {
+    background: var(--gold-light);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(201,168,76,0.3);
+  }
+  .btn-outline {
+    display: inline-block;
+    padding: 1rem 2.8rem;
+    border: 1px solid rgba(201,168,76,0.5);
+    color: var(--gold);
+    font-size: 0.7rem;
+    font-weight: 400;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.3s;
+    margin-left: 1rem;
+  }
+  .btn-outline:hover {
+    border-color: var(--gold);
+    background: rgba(201,168,76,0.08);
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ─── DIVIDER ─── */
+  .gold-divider {
+    width: 100%; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    opacity: 0.4;
+  }
+
+  /* ─── INTRO STRIP ─── */
+  .intro-strip {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    background: rgba(58,175,169,0.08);
+    border-top: 1px solid rgba(201,168,76,0.15);
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+  }
+  .intro-item {
+    padding: 2.5rem 2rem;
+    text-align: center;
+    border-right: 1px solid rgba(201,168,76,0.1);
+  }
+  .intro-item:last-child { border-right: none; }
+  .intro-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.8rem;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 0.4rem;
+  }
+  .intro-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+  }
+
+  /* ─── SECTIONS ─── */
+  section { padding: 6rem 2rem; max-width: 1100px; margin: 0 auto; }
+  .section-eyebrow {
+    font-size: 0.6rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    font-weight: 300;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+  }
+  .section-title em { font-style: italic; color: var(--teal); }
+  .section-body {
+    font-size: 0.9rem;
+    line-height: 1.9;
+    color: rgba(255,255,255,0.6);
+    max-width: 560px;
+  }
+
+  /* ─── SERVICES ─── */
+  .services-wrapper { background: rgba(255,255,255,0.02); }
+  .services-inner { max-width: 1100px; margin: 0 auto; padding: 6rem 2rem; }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1px;
+    background: rgba(201,168,76,0.1);
+    border: 1px solid rgba(201,168,76,0.1);
+    margin-top: 3rem;
+  }
+  .service-card {
+    background: var(--teal-deep);
+    padding: 2rem 1.8rem;
+    display: flex; justify-content: space-between; align-items: flex-start;
+    transition: background 0.3s;
+    cursor: default;
+  }
+  .service-card:hover { background: rgba(58,175,169,0.12); }
+  .service-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    font-weight: 400;
+    color: var(--white);
+    margin-bottom: 0.3rem;
+  }
+  .service-desc {
+    font-size: 0.7rem;
+    letter-spacing: 0.05em;
+    color: rgba(255,255,255,0.4);
+    line-height: 1.5;
+    max-width: 160px;
+  }
+  .service-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    color: var(--gold);
+    white-space: nowrap;
+    margin-left: 1rem;
+    flex-shrink: 0;
+  }
+
+  /* ─── FEATURED ─── */
+  .featured {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 4rem; align-items: center;
+  }
+  .featured-badge {
+    display: inline-block;
+    padding: 0.4rem 1.2rem;
+    border: 1px solid var(--gold);
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 2rem;
+  }
+  .benefit-list { list-style: none; margin-top: 1.5rem; }
+  .benefit-list li {
+    display: flex; align-items: center; gap: 1rem;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid rgba(201,168,76,0.1);
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.7);
+    letter-spacing: 0.02em;
+  }
+  .benefit-list li::before {
+    content: '✦';
+    color: var(--gold);
+    font-size: 0.5rem;
+    flex-shrink: 0;
+  }
+  .featured-visual {
+    position: relative;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .glass-card {
+    background: rgba(58,175,169,0.12);
+    border: 1px solid rgba(201,168,76,0.3);
+    padding: 3rem 2.5rem;
+    text-align: center;
+    backdrop-filter: blur(20px);
+    position: relative;
+  }
+  .glass-card::before {
+    content: '';
+    position: absolute; top: -1px; left: 20%; right: 20%; height: 1px;
+    background: var(--gold);
+  }
+  .glass-card-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 2rem;
+    color: var(--white);
+    margin: 1rem 0;
+  }
+  .glass-card-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3rem;
+    color: var(--gold);
+    margin: 0.5rem 0;
+  }
+  .glass-card-note {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+  }
+
+  /* ─── TESTIMONIAL ─── */
+  .testimonial-section { background: rgba(58,175,169,0.06); }
+  .testimonial-inner {
+    max-width: 800px; margin: 0 auto;
+    padding: 6rem 2rem; text-align: center;
+  }
+  .testimonial-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    font-style: italic;
+    font-weight: 300;
+    line-height: 1.5;
+    color: var(--white);
+    margin: 2rem 0;
+  }
+  .testimonial-attr {
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  /* ─── LOCATION ─── */
+  .location-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+  .location-detail { margin-bottom: 2rem; }
+  .location-detail-label {
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.4rem;
+  }
+  .location-detail-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    color: var(--white);
+    line-height: 1.4;
+  }
+  .map-placeholder {
+    background: rgba(58,175,169,0.1);
+    border: 1px solid rgba(201,168,76,0.2);
+    height: 280px;
+    display: flex; align-items: center; justify-content: center;
+    flex-direction: column; gap: 1rem;
+  }
+  .map-placeholder p {
+    font-size: 0.7rem; letter-spacing: 0.2em;
+    text-transform: uppercase; color: rgba(255,255,255,0.3);
+  }
+
+  /* ─── BOOKING CTA ─── */
+  .booking-cta {
+    text-align: center;
+    padding: 7rem 2rem;
+    background: radial-gradient(ellipse at center, rgba(58,175,169,0.2) 0%, transparent 70%),
+                var(--teal-deep);
+    border-top: 1px solid rgba(201,168,76,0.15);
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+  }
+  .booking-cta .section-title { margin: 0 auto 0.8rem; max-width: 600px; }
+
+  /* ─── FOOTER ─── */
+  footer {
+    text-align: center;
+    padding: 2.5rem 2rem;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+  .footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    color: var(--gold);
+    letter-spacing: 0.15em;
+    margin-bottom: 0.5rem;
+  }
+  footer p {
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    color: rgba(255,255,255,0.25);
+    text-transform: uppercase;
+  }
+  footer a { color: rgba(255,255,255,0.4); text-decoration: none; }
+  footer a:hover { color: var(--gold); }
+  .footer-links {
+    display: flex; justify-content: center; gap: 2rem;
+    margin: 1rem 0;
+    list-style: none;
+  }
+  .footer-links a {
+    font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.2rem; }
+    .nav-links { display: none; }
+    .intro-strip { grid-template-columns: 1fr; }
+    .intro-item { border-right: none; border-bottom: 1px solid rgba(201,168,76,0.1); }
+    .featured { grid-template-columns: 1fr; }
+    .location-grid { grid-template-columns: 1fr; }
+    .btn-outline { display: none; }
+    .services-grid { grid-template-columns: 1fr; }
+    section { padding: 4rem 1.5rem; }
+    .services-inner { padding: 4rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Glow Bar Lounge</div>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#featured">Glass Skin</a></li>
+    <li><a href="#location">Find Us</a></li>
+    <li><a href="https://myappointment.co.za/glow-bar-lounge" target="_blank">Book Now</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <svg class="drop-icon" viewBox="0 0 56 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M28 2C28 2 4 30 4 46C4 59.3 14.7 70 28 70C41.3 70 52 59.3 52 46C52 30 28 2 28 2Z" fill="url(#goldGrad)" stroke="rgba(201,168,76,0.3)" stroke-width="1"/>
+    <defs>
+      <linearGradient id="goldGrad" x1="28" y1="2" x2="28" y2="70" gradientUnits="userSpaceOnUse">
+        <stop offset="0%" stop-color="#E2C97A"/>
+        <stop offset="100%" stop-color="#C9A84C"/>
+      </linearGradient>
+    </defs>
+  </svg>
+
+  <p class="hero-eyebrow">Windermere, Durban · KwaZulu-Natal</p>
+  <h1 class="hero-title">Glow Bar<br><em>Lounge</em></h1>
+  <p class="hero-sub">IV Drips · Luxury Facials · Microneedling</p>
+  <p class="hero-tagline">Nurturing your Skin. Empowering your Confidence.</p>
+  <a href="https://myappointment.co.za/glow-bar-lounge" target="_blank" class="btn-primary">Book Your Session</a>
+  <a href="#services" class="btn-outline">View Services</a>
+</div>
+
+<!-- INTRO STRIP -->
+<div class="intro-strip">
+  <div class="intro-item">
+    <div class="intro-number">12+</div>
+    <div class="intro-label">IV Drip Formulas</div>
+  </div>
+  <div class="intro-item">
+    <div class="intro-number">100%</div>
+    <div class="intro-label">Qualified Practitioners</div>
+  </div>
+  <div class="intro-item">
+    <div class="intro-number">Real</div>
+    <div class="intro-label">Results. Real Skin.</div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section>
+  <p class="section-eyebrow">About Us</p>
+  <h2 class="section-title">Where Science Meets<br><em>Radiance</em></h2>
+  <p class="section-body">
+    Glow Bar Lounge is a luxury wellness destination in the heart of Windermere, Durban. Led by qualified practitioners, we combine cutting-edge IV therapy with premium facial treatments — delivering results that go beyond the surface. Because real glow starts from within.
+  </p>
+</section>
+
+<div class="gold-divider"></div>
+
+<!-- SERVICES -->
+<div class="services-wrapper" id="services">
+  <div class="services-inner">
+    <p class="section-eyebrow">The Drip Menu</p>
+    <h2 class="section-title">Find Your <em>Formula</em></h2>
+
+    <div class="services-grid">
+      <div class="service-card">
+        <div>
+          <div class="service-name">Glass Skin Drip</div>
+          <div class="service-desc">Smooth, dewy, poreless perfection</div>
+        </div>
+        <div class="service-price">R2 200</div>
+      </div>
+      <div class="service-card">
+        <div>
+          <div class="service-name">Dazzling Skin Drip</div>
+          <div class="service-desc">Brighten & illuminate</div>
+        </div>
+        <div class="service-price">R1 600</div>
+      </div>
+      <div class="service-card">
+        <div>
+          <div class="service-name">Glow in The Dark Drip</div>
+          <div class="service-desc">Deep luminosity boost</div>
+        </div>
+        <div class="service-price">R2 600</div>
+      </div>
+      <div class="service-card">
+        <div>
+          <div class="service-name">Skin Brightening Drip</div>
+          <div class="service-desc">Even tone & radiance</div>
+        </div>
+        <div class="service-price">R2 200</div>
+      </div>
+      <div class="service-card">
+        <div>
+          <div class="service-name">No Make Up Drip</div>
+          <div class="service-desc">Effortless natural skin</div>
+        </div>
+        <div class="service-price">R2 800</div>
+      </div>
+      <div class="service-card">
+        <div>
+          <div class="service-name">Collagen Booster Drip</div>
+          <div class="service-desc">Firm & youthful skin</div>
+        </div>
+        <div class="service-price">R1 200</div>
+      </div>
+      <div class="service-card">
+        <div>
+          <div class="service-name">Anti Aging Drip</div>
+          <div class="service-desc">Turn back the clock</div>
+        </div>
+        <div class="service-price">R1 800</div>
+      </div>
+      <div class="service-card">
+        <div>
+          <div class="service-name">Acne Drip</div>
+          <div class="service-desc">Clear, calm & balanced</div>
+        </div>
+        <div class="service-price">R1 800</div>
+      </div>
+      <div class="service-card">
+        <div>
+          <div class="service-name">Immunity Boost</div>
+          <div class="service-desc">Vitamin C + Glutathione</div>
+        </div>
+        <div class="service-price">R800</div>
+      </div>
+      <div class="service-card">
+        <div>
+          <div class="service-name">Energy Booster Drip</div>
+          <div class="service-desc">B12 + B-Complex blend</div>
+        </div>
+        <div class="service-price">R500</div>
+      </div>
+      <div class="service-card">
+        <div>
+          <div class="service-name">Hangover Drip</div>
+          <div class="service-desc">Rehydrate & recover</div>
+        </div>
+        <div class="service-price">R850</div>
+      </div>
+      <div class="service-card">
+        <div>
+          <div class="service-name">Weight Loss Drip</div>
+          <div class="service-desc">L-Carnitine fat burn support</div>
+        </div>
+        <div class="service-price">R2 800</div>
+      </div>
+    </div>
+
+    <div style="margin-top:1rem; background: rgba(58,175,169,0.08); border:1px solid rgba(201,168,76,0.15); padding:1.5rem 2rem; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">
+      <div>
+        <div style="font-size:0.6rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:0.4rem;">Also Available</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:rgba(255,255,255,0.8);">Luxury Facials · Microneedling · Glow Combo Packages</div>
+      </div>
+      <a href="https://myappointment.co.za/glow-bar-lounge" target="_blank" class="btn-primary" style="animation:none;">Book a Session</a>
+    </div>
+  </div>
+</div>
+
+<!-- FEATURED: GLASS SKIN -->
+<section id="featured" style="max-width:none; padding:6rem 4rem; background: rgba(0,0,0,0.2);">
+  <div class="featured" style="max-width:1100px; margin:0 auto;">
+    <div>
+      <div class="featured-badge">⭑ Signature Treatment</div>
+      <p class="section-eyebrow">Most Requested</p>
+      <h2 class="section-title">Glass Skin<br><em>isn't a filter.</em><br>It's a treatment.</h2>
+      <p class="section-body">Our Glass Skin Drip delivers a powerful IV infusion designed to reveal your most radiant, poreless skin — from within. No filter needed.</p>
+      <ul class="benefit-list">
+        <li>Brightens and enhances your natural skin tone</li>
+        <li>Evens out complexion & reduces discoloration</li>
+        <li>Boosts collagen for firmer, more youthful skin</li>
+        <li>Deep hydration at a cellular level</li>
+        <li>Detoxifies and flushes out toxins</li>
+        <li>Promotes smooth, poreless, glass-like skin</li>
+      </ul>
+    </div>
+    <div class="featured-visual">
+      <div class="glass-card">
+        <svg width="36" height="48" viewBox="0 0 56 72" fill="none" style="margin-bottom:0.5rem">
+          <path d="M28 2C28 2 4 30 4 46C4 59.3 14.7 70 28 70C41.3 70 52 59.3 52 46C52 30 28 2 28 2Z" fill="url(#gg2)" />
+          <defs><linearGradient id="gg2" x1="28" y1="2" x2="28" y2="70"><stop stop-color="#E2C97A"/><stop offset="1" stop-color="#C9A84C"/></linearGradient></defs>
+        </svg>
+        <div class="glass-card-note">Signature IV Treatment</div>
+        <div class="glass-card-title">Glass Skin Drip</div>
+        <div class="glass-card-price">R2 200</div>
+        <div class="glass-card-note" style="margin-top:0.5rem;margin-bottom:1.5rem;">Book with code GLASSSKIN</div>
+        <a href="https://myappointment.co.za/glow-bar-lounge" target="_blank" class="btn-primary" style="animation:none;display:block;text-align:center;">Book Now</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIAL -->
+<div class="testimonial-section">
+  <div class="testimonial-inner">
+    <p class="section-eyebrow">Real Results. Real Skin.</p>
+    <div class="testimonial-quote">
+      "A time to pause and pour into myself — and it was worth it."
+    </div>
+    <p class="testimonial-attr">— Glow Bar Lounge Client, Durban</p>
+  </div>
+</div>
+
+<!-- LOCATION -->
+<section id="location">
+  <div class="location-grid">
+    <div>
+      <p class="section-eyebrow">Find Us</p>
+      <h2 class="section-title">Visit the<br><em>Lounge</em></h2>
+
+      <div class="location-detail">
+        <div class="location-detail-label">Address</div>
+        <div class="location-detail-value">119 Madeline Rd,<br>Windermere, Durban</div>
+      </div>
+      <div class="location-detail">
+        <div class="location-detail-label">Phone</div>
+        <div class="location-detail-value"><a href="tel:0791367102" style="color:var(--white);text-decoration:none;">079 136 7102</a></div>
+      </div>
+      <div class="location-detail">
+        <div class="location-detail-label">Bookings</div>
+        <div class="location-detail-value"><a href="https://myappointment.co.za/glow-bar-lounge" target="_blank" style="color:var(--gold);text-decoration:none;">myappointment.co.za/glow-bar-lounge</a></div>
+      </div>
+      <div class="location-detail">
+        <div class="location-detail-label">Instagram</div>
+        <div class="location-detail-value"><a href="https://instagram.com/glowbarloungesa" target="_blank" style="color:var(--teal);text-decoration:none;">@glowbarloungesa</a></div>
+      </div>
+    </div>
+    <div class="map-placeholder">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="rgba(201,168,76,0.4)" stroke-width="1.5">
+        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+        <circle cx="12" cy="9" r="2.5"/>
+      </svg>
+      <p>Windermere, Durban</p>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING CTA -->
+<div class="booking-cta">
+  <p class="section-eyebrow">Ready to Glow?</p>
+  <h2 class="section-title" style="max-width:600px;margin:0 auto 1rem;">Your skin deserves<br><em>the best.</em></h2>
+  <p style="color:rgba(255,255,255,0.5);font-size:0.85rem;margin-bottom:2.5rem;letter-spacing:0.05em;">Qualified practitioners. Tailored treatments. Real results.</p>
+  <a href="https://myappointment.co.za/glow-bar-lounge" target="_blank" class="btn-primary">Book Your Session Today</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Glow Bar Lounge</div>
+  <ul class="footer-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="tel:0791367102">Contact</a></li>
+    <li><a href="https://instagram.com/glowbarloungesa" target="_blank">Instagram</a></li>
+    <li><a href="https://myappointment.co.za/glow-bar-lounge" target="_blank">Book Now</a></li>
+  </ul>
+  <p>© 2025 Glow Bar Lounge · Windermere, Durban · 079 136 7102</p>
+  <p style="margin-top:0.5rem;">Website by <a href="#" style="color:var(--gold);">Koll8</a></p>
+</footer>
+
+</body>
+</html>
