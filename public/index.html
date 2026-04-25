@@ -62,9 +62,10 @@
     text-align: center;
     padding: 8rem 2rem 4rem;
     position: relative;
-    background: radial-gradient(ellipse at 60% 40%, rgba(58,175,169,0.25) 0%, transparent 60%),
-                radial-gradient(ellipse at 20% 80%, rgba(201,168,76,0.1) 0%, transparent 50%),
-                var(--teal-deep);
+    background: radial-gradient(ellipse at 60% 40%, rgba(58,175,169,0.2) 0%, transparent 60%),
+                radial-gradient(ellipse at 20% 80%, rgba(201,168,76,0.08) 0%, transparent 50%),
+                linear-gradient(rgba(13,59,56,0.68), rgba(13,59,56,0.82)),
+                url('https://images.unsplash.com/photo-1540555700478-4be290a3a0a5?w=1920&q=80&fit=crop') center/cover no-repeat;
     overflow: hidden;
   }
   .hero::before {
@@ -419,18 +420,121 @@
     font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
   }
 
+  /* ─── ABOUT GRID ─── */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+  .about-image { position: relative; overflow: hidden; }
+  .about-image img {
+    width: 100%; height: 440px;
+    object-fit: cover; display: block;
+    border: 1px solid rgba(201,168,76,0.2);
+  }
+  .about-image::after {
+    content: '';
+    position: absolute; bottom: 0; left: 0; right: 0; height: 40%;
+    background: linear-gradient(transparent, rgba(13,59,56,0.5));
+    pointer-events: none;
+  }
+
+  /* ─── GALLERY ─── */
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3px;
+  }
+  .gallery-item { overflow: hidden; aspect-ratio: 4/3; position: relative; }
+  .gallery-item img {
+    width: 100%; height: 100%;
+    object-fit: cover; display: block;
+    transition: transform 0.6s ease;
+  }
+  .gallery-item:hover img { transform: scale(1.06); }
+
+  /* ─── GLOW SPECIAL ─── */
+  .special-wrapper { background: rgba(201,168,76,0.04); }
+  .special-inner { max-width: 1100px; margin: 0 auto; padding: 6rem 2rem; }
+  .special-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: rgba(201,168,76,0.12);
+    border: 1px solid rgba(201,168,76,0.12);
+    margin-top: 2.5rem;
+  }
+  .special-card {
+    background: var(--teal-deep);
+    padding: 2.2rem 1.8rem;
+    text-align: center;
+    transition: background 0.3s;
+  }
+  .special-card:hover { background: rgba(58,175,169,0.1); }
+  .special-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.05rem;
+    color: rgba(255,255,255,0.85);
+    line-height: 1.4;
+    margin-bottom: 0.6rem;
+  }
+  .special-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.2rem;
+    color: var(--gold);
+    margin: 0.4rem 0;
+  }
+  .special-tag {
+    display: inline-block;
+    font-size: 0.58rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+    border: 1px solid rgba(201,168,76,0.2);
+    padding: 0.25rem 0.8rem;
+    margin-top: 0.5rem;
+  }
+
+  /* ─── SOCIAL FOLLOW ─── */
+  .social-follow {
+    text-align: center;
+    padding: 5rem 2rem;
+    background: rgba(0,0,0,0.15);
+    border-top: 1px solid rgba(201,168,76,0.12);
+    border-bottom: 1px solid rgba(201,168,76,0.12);
+  }
+  .social-links { display: flex; justify-content: center; gap: 1.2rem; margin-top: 2.5rem; flex-wrap: wrap; }
+  .social-link {
+    display: inline-flex; align-items: center; gap: 0.7rem;
+    padding: 0.85rem 2rem;
+    border: 1px solid rgba(201,168,76,0.35);
+    color: rgba(255,255,255,0.65);
+    text-decoration: none;
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    transition: all 0.3s;
+  }
+  .social-link:hover { border-color: var(--gold); color: var(--gold); background: rgba(201,168,76,0.05); }
+  .social-link svg { flex-shrink: 0; }
+
   /* ─── RESPONSIVE ─── */
   @media (max-width: 768px) {
     nav { padding: 1rem 1.2rem; }
     .nav-links { display: none; }
     .intro-strip { grid-template-columns: 1fr; }
     .intro-item { border-right: none; border-bottom: 1px solid rgba(201,168,76,0.1); }
+    .about-grid { grid-template-columns: 1fr; }
     .featured { grid-template-columns: 1fr; }
     .location-grid { grid-template-columns: 1fr; }
     .btn-outline { display: none; }
     .services-grid { grid-template-columns: 1fr; }
+    .special-grid { grid-template-columns: 1fr; }
+    .gallery-grid { grid-template-columns: 1fr; }
     section { padding: 4rem 1.5rem; }
     .services-inner { padding: 4rem 1.5rem; }
+    .special-inner { padding: 4rem 1.5rem; }
   }
 </style>
 </head>
@@ -443,6 +547,8 @@
     <li><a href="#services">Services</a></li>
     <li><a href="#featured">Glass Skin</a></li>
     <li><a href="#location">Find Us</a></li>
+    <li><a href="https://www.instagram.com/glowbarloungesa" target="_blank">Instagram</a></li>
+    <li><a href="https://www.tiktok.com/@glow.bar.lounge" target="_blank">TikTok</a></li>
     <li><a href="https://myappointment.co.za/glow-bar-lounge" target="_blank">Book Now</a></li>
   </ul>
 </nav>
@@ -485,11 +591,21 @@
 
 <!-- ABOUT -->
 <section>
-  <p class="section-eyebrow">About Us</p>
-  <h2 class="section-title">Where Science Meets<br><em>Radiance</em></h2>
-  <p class="section-body">
-    Glow Bar Lounge is a luxury wellness destination in the heart of Windermere, Durban. Led by qualified practitioners, we combine cutting-edge IV therapy with premium facial treatments — delivering results that go beyond the surface. Because real glow starts from within.
-  </p>
+  <div class="about-grid">
+    <div>
+      <p class="section-eyebrow">About Us</p>
+      <h2 class="section-title">Where Science Meets<br><em>Radiance</em></h2>
+      <p class="section-body">
+        Glow Bar Lounge is a luxury wellness destination in the heart of Windermere, Durban. Led by qualified practitioners, we combine cutting-edge IV therapy with premium facial treatments — delivering results that go beyond the surface. Because real glow starts from within.
+      </p>
+      <p class="section-body" style="margin-top:1.2rem;">
+        Our team of certified aestheticians and IV therapists are committed to personalised care — every session is tailored to your skin, your goals, and your wellbeing.
+      </p>
+    </div>
+    <div class="about-image">
+      <img src="team.jpg" alt="The Glow Bar Lounge team — qualified practitioners in Windermere, Durban">
+    </div>
+  </div>
 </section>
 
 <div class="gold-divider"></div>
@@ -597,6 +713,35 @@
   </div>
 </div>
 
+<!-- GLOW SPECIALS -->
+<div class="special-wrapper">
+  <div class="special-inner">
+    <p class="section-eyebrow">Combo Packages</p>
+    <h2 class="section-title">The <em>Glow Special</em></h2>
+    <p class="section-body">Pair your IV drip with Microneedling for compounded results — book any combo and let us build your treatment plan.</p>
+    <div class="special-grid">
+      <div class="special-card">
+        <div class="special-name">Dazzling Skin Drip<br>+ Microneedling</div>
+        <div class="special-price">R1 900</div>
+        <div class="special-tag">Brighten &amp; Resurface</div>
+      </div>
+      <div class="special-card">
+        <div class="special-name">Skin Brightening Drip<br>+ Microneedling</div>
+        <div class="special-price">R2 600</div>
+        <div class="special-tag">Even Tone &amp; Refine</div>
+      </div>
+      <div class="special-card">
+        <div class="special-name">Glass Skin Drip<br>+ Microneedling</div>
+        <div class="special-price">R3 200</div>
+        <div class="special-tag">Signature Combo</div>
+      </div>
+    </div>
+    <div style="margin-top:1.5rem;text-align:center;">
+      <a href="https://myappointment.co.za/glow-bar-lounge" target="_blank" class="btn-primary" style="animation:none;">Book a Combo Session</a>
+    </div>
+  </div>
+</div>
+
 <!-- FEATURED: GLASS SKIN -->
 <section id="featured" style="max-width:none; padding:6rem 4rem; background: rgba(0,0,0,0.2);">
   <div class="featured" style="max-width:1100px; margin:0 auto;">
@@ -614,17 +759,21 @@
         <li>Promotes smooth, poreless, glass-like skin</li>
       </ul>
     </div>
-    <div class="featured-visual">
-      <div class="glass-card">
-        <svg width="36" height="48" viewBox="0 0 56 72" fill="none" style="margin-bottom:0.5rem">
-          <path d="M28 2C28 2 4 30 4 46C4 59.3 14.7 70 28 70C41.3 70 52 59.3 52 46C52 30 28 2 28 2Z" fill="url(#gg2)" />
-          <defs><linearGradient id="gg2" x1="28" y1="2" x2="28" y2="70"><stop stop-color="#E2C97A"/><stop offset="1" stop-color="#C9A84C"/></linearGradient></defs>
-        </svg>
-        <div class="glass-card-note">Signature IV Treatment</div>
-        <div class="glass-card-title">Glass Skin Drip</div>
-        <div class="glass-card-price">R2 200</div>
-        <div class="glass-card-note" style="margin-top:0.5rem;margin-bottom:1.5rem;">Book with code GLASSSKIN</div>
-        <a href="https://myappointment.co.za/glow-bar-lounge" target="_blank" class="btn-primary" style="animation:none;display:block;text-align:center;">Book Now</a>
+    <div class="featured-visual" style="position:relative;width:100%;">
+      <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=700&q=80&fit=crop" alt="Glowing skin result" style="width:100%;height:520px;object-fit:cover;display:block;border:1px solid rgba(201,168,76,0.2);">
+      <div style="position:absolute;inset:0;background:rgba(13,59,56,0.4);pointer-events:none;"></div>
+      <div style="position:absolute;bottom:2rem;left:2rem;right:2rem;">
+        <div class="glass-card">
+          <svg width="36" height="48" viewBox="0 0 56 72" fill="none" style="margin-bottom:0.5rem">
+            <path d="M28 2C28 2 4 30 4 46C4 59.3 14.7 70 28 70C41.3 70 52 59.3 52 46C52 30 28 2 28 2Z" fill="url(#gg2)" />
+            <defs><linearGradient id="gg2" x1="28" y1="2" x2="28" y2="70"><stop stop-color="#E2C97A"/><stop offset="1" stop-color="#C9A84C"/></linearGradient></defs>
+          </svg>
+          <div class="glass-card-note">Signature IV Treatment</div>
+          <div class="glass-card-title">Glass Skin Drip</div>
+          <div class="glass-card-price">R2 200</div>
+          <div class="glass-card-note" style="margin-top:0.5rem;margin-bottom:1.5rem;">Book with code GLASSSKIN</div>
+          <a href="https://myappointment.co.za/glow-bar-lounge" target="_blank" class="btn-primary" style="animation:none;display:block;text-align:center;">Book Now</a>
+        </div>
       </div>
     </div>
   </div>
@@ -638,6 +787,19 @@
       "A time to pause and pour into myself — and it was worth it."
     </div>
     <p class="testimonial-attr">— Glow Bar Lounge Client, Durban</p>
+  </div>
+</div>
+
+<!-- GALLERY -->
+<div class="gallery-grid">
+  <div class="gallery-item">
+    <img src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=600&q=80&fit=crop" alt="Facial treatment">
+  </div>
+  <div class="gallery-item">
+    <img src="https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=600&q=80&fit=crop" alt="Skincare products">
+  </div>
+  <div class="gallery-item">
+    <img src="https://images.unsplash.com/photo-1540555700478-4be290a3a0a5?w=600&q=80&fit=crop" alt="Luxury spa treatment">
   </div>
 </div>
 
@@ -665,15 +827,36 @@
         <div class="location-detail-value"><a href="https://instagram.com/glowbarloungesa" target="_blank" style="color:var(--teal);text-decoration:none;">@glowbarloungesa</a></div>
       </div>
     </div>
-    <div class="map-placeholder">
-      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="rgba(201,168,76,0.4)" stroke-width="1.5">
-        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
-        <circle cx="12" cy="9" r="2.5"/>
-      </svg>
-      <p>Windermere, Durban</p>
+    <div style="position:relative;overflow:hidden;border:1px solid rgba(201,168,76,0.2);">
+      <img src="https://images.unsplash.com/photo-1560750588-73207b1ef5b8?w=700&q=80&fit=crop" alt="Luxury treatment lounge" style="width:100%;height:280px;object-fit:cover;display:block;">
+      <div style="position:absolute;inset:0;background:rgba(13,59,56,0.35);pointer-events:none;"></div>
+      <div style="position:absolute;bottom:1.5rem;left:1.5rem;">
+        <a href="https://maps.google.com/?q=119+Madeline+Rd,+Windermere,+Durban" target="_blank" class="btn-primary" style="animation:none;font-size:0.65rem;padding:0.7rem 1.5rem;">Get Directions</a>
+      </div>
     </div>
   </div>
 </section>
+
+<!-- SOCIAL FOLLOW -->
+<div class="social-follow">
+  <p class="section-eyebrow">Stay Connected</p>
+  <h2 class="section-title" style="font-size:clamp(1.8rem,4vw,2.8rem);margin-bottom:0.5rem;">Follow our <em>journey</em></h2>
+  <p style="font-size:0.8rem;color:rgba(255,255,255,0.45);letter-spacing:0.05em;">Behind-the-scenes treatments, client results, and exclusive offers</p>
+  <div class="social-links">
+    <a href="https://www.instagram.com/glowbarloungesa" target="_blank" class="social-link">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+      @glowbarloungesa
+    </a>
+    <a href="https://www.tiktok.com/@glow.bar.lounge" target="_blank" class="social-link">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V9.03a8.16 8.16 0 004.77 1.52V7.1a4.85 4.85 0 01-1-.41z"/></svg>
+      @glow.bar.lounge
+    </a>
+    <a href="https://myappointment.co.za/glow-bar-lounge" target="_blank" class="social-link">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+      Book Online
+    </a>
+  </div>
+</div>
 
 <!-- BOOKING CTA -->
 <div class="booking-cta">
@@ -689,7 +872,8 @@
   <ul class="footer-links">
     <li><a href="#services">Services</a></li>
     <li><a href="tel:0791367102">Contact</a></li>
-    <li><a href="https://instagram.com/glowbarloungesa" target="_blank">Instagram</a></li>
+    <li><a href="https://www.instagram.com/glowbarloungesa" target="_blank">Instagram</a></li>
+    <li><a href="https://www.tiktok.com/@glow.bar.lounge" target="_blank">TikTok</a></li>
     <li><a href="https://myappointment.co.za/glow-bar-lounge" target="_blank">Book Now</a></li>
   </ul>
   <p>© 2025 Glow Bar Lounge · Windermere, Durban · 079 136 7102</p>
